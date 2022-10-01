@@ -24103,41 +24103,16 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 3
   m_ColliderType: 1
---- !u!1 &1601671080 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1615761838058080190, guid: 54ebd56931b862d40a01b414b16bfcd2, type: 3}
+--- !u!50 &1601671082 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 9128175651122792170, guid: 54ebd56931b862d40a01b414b16bfcd2, type: 3}
   m_PrefabInstance: {fileID: 1615761838616741910}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1601671081
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+--- !u!95 &1601671085 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1615761838058080188, guid: 54ebd56931b862d40a01b414b16bfcd2, type: 3}
+  m_PrefabInstance: {fileID: 1615761838616741910}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1601671080}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: e1a1f8c83ca74cf439a411964dac6764, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!114 &1602537885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24816,14 +24791,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 617104420106920937, guid: 54ebd56931b862d40a01b414b16bfcd2, type: 3}
-      propertyPath: m_Actions
-      value: 
-      objectReference: {fileID: -944628639613478452, guid: e1a1f8c83ca74cf439a411964dac6764, type: 3}
-    - target: {fileID: 617104420106920937, guid: 54ebd56931b862d40a01b414b16bfcd2, type: 3}
-      propertyPath: m_DefaultActionMap
-      value: Player
-      objectReference: {fileID: 0}
     - target: {fileID: 1615761838058080189, guid: 54ebd56931b862d40a01b414b16bfcd2, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -24872,6 +24839,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lacoco(Player)
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 617104420106920937, guid: 54ebd56931b862d40a01b414b16bfcd2, type: 3}
+    - target: {fileID: 3844591005452398193, guid: 54ebd56931b862d40a01b414b16bfcd2, type: 3}
+      propertyPath: jumpSpeed
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3844591005452398193, guid: 54ebd56931b862d40a01b414b16bfcd2, type: 3}
+      propertyPath: lacocoAnimation
+      value: 
+      objectReference: {fileID: 1601671085}
+    - target: {fileID: 3844591005452398193, guid: 54ebd56931b862d40a01b414b16bfcd2, type: 3}
+      propertyPath: lacocoRigidBody
+      value: 
+      objectReference: {fileID: 1601671082}
+    - target: {fileID: 9128175651122792170, guid: 54ebd56931b862d40a01b414b16bfcd2, type: 3}
+      propertyPath: m_GravityScale
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9128175651122792170, guid: 54ebd56931b862d40a01b414b16bfcd2, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54ebd56931b862d40a01b414b16bfcd2, type: 3}

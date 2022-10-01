@@ -7,11 +7,13 @@ public class PlayerMovement : MonoBehaviour
 {
     Vector2 moveInput;
     [SerializeField] Rigidbody2D lacocoRigidBody;
-    // [SerializeField] Transform lacocoTransform;
     float runSpeed = 10f;
+    [SerializeField] Animator lacocoAnimation;
+    [SerializeField] float jumpSpeed = 25f;
     void Start()
     {
         lacocoRigidBody.GetComponent<Rigidbody2D>();
+        lacocoAnimation.GetComponent<Animator>();
     }
 
     void Update()
@@ -24,9 +26,18 @@ public class PlayerMovement : MonoBehaviour
         moveInput = value.Get<Vector2>();
     }
 
+    void OnJump(InputValue value) {
+        if (value.isPressed) {
+            lacocoRigidBody.velocity += new Vector2(0f, jumpSpeed);
+        }
+    }
+
     void Run() {
         Vector2 playerVelocity = new Vector2(moveInput.x * runSpeed, lacocoRigidBody.velocity.y);
         lacocoRigidBody.velocity = playerVelocity;
+
+        bool playerHasHorizontalSpeed = Mathf.Abs(lacocoRigidBody.velocity.x) > Mathf.Epsilon;
+        lacocoAnimation.SetBool("isRunning", playerHasHorizontalSpeed);
     }
 
     void FlipSprite() {
