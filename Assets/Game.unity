@@ -24108,24 +24108,36 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1615761838058080190, guid: 54ebd56931b862d40a01b414b16bfcd2, type: 3}
   m_PrefabInstance: {fileID: 1615761838616741910}
   m_PrefabAsset: {fileID: 0}
---- !u!252 &1601671084
-SurfaceEffector2D:
+--- !u!114 &1601671081
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1601671080}
   m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_Speed: 0
-  m_SpeedVariation: 0
-  m_ForceScale: 0.1
-  m_UseContactForce: 0
-  m_UseFriction: 1
-  m_UseBounce: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: e1a1f8c83ca74cf439a411964dac6764, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!114 &1602537885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24804,17 +24816,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 617104420106920937, guid: 54ebd56931b862d40a01b414b16bfcd2, type: 3}
+      propertyPath: m_Actions
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: e1a1f8c83ca74cf439a411964dac6764, type: 3}
+    - target: {fileID: 617104420106920937, guid: 54ebd56931b862d40a01b414b16bfcd2, type: 3}
+      propertyPath: m_DefaultActionMap
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 1615761838058080189, guid: 54ebd56931b862d40a01b414b16bfcd2, type: 3}
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1615761838058080189, guid: 54ebd56931b862d40a01b414b16bfcd2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.93
+      value: -5.01
       objectReference: {fileID: 0}
     - target: {fileID: 1615761838058080189, guid: 54ebd56931b862d40a01b414b16bfcd2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.1
+      value: 1.94
       objectReference: {fileID: 0}
     - target: {fileID: 1615761838058080189, guid: 54ebd56931b862d40a01b414b16bfcd2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -24852,5 +24872,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lacoco(Player)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 617104420106920937, guid: 54ebd56931b862d40a01b414b16bfcd2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 54ebd56931b862d40a01b414b16bfcd2, type: 3}
