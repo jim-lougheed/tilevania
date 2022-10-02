@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Rigidbody2D lacocoRigidBody;
     [SerializeField] CapsuleCollider2D lacocoBodyCollider;
     [SerializeField] BoxCollider2D lacocoFeetCollider;
+    [SerializeField] SpriteRenderer lacocoSprite;
     [SerializeField] float runSpeed = 7f;
     [SerializeField] float climbSpeed = 5f;
     float initialGravityScale = 6f;
@@ -16,35 +17,48 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Animator lacocoAnimation;
     [SerializeField] float jumpSpeed = 20f;
     bool isJumping = false;
+    public bool isAlive = true;
     void Start()
     {
         lacocoRigidBody.GetComponent<Rigidbody2D>();
         lacocoAnimation.GetComponent<Animator>();
         lacocoBodyCollider.GetComponent<CapsuleCollider2D>();
         lacocoFeetCollider.GetComponent<BoxCollider2D>();
+        lacocoSprite.GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
+        if (!isAlive) {
+            StopDeathRoll();
+            return;
+        }
         Run();
         FlipSprite();
         ClimbLadder();
+        Die();
         if (lacocoRigidBody.velocity.y < 0) {
             isJumping = false;
         }
     }
 
     void OnMove(InputValue value) {
+        if (!isAlive) {
+            return;
+        }
         moveInput = value.Get<Vector2>();
     }
 
     void OnJump(InputValue value) {
+        if (!isAlive) {
+            return;
+        }
         if (value.isPressed && lacocoBodyCollider.IsTouchingLayers(LayerMask.GetMask("Ladder")) && lacocoRigidBody.velocity.x > 0) {
             lacocoRigidBody.gravityScale = initialGravityScale;
             lacocoRigidBody.velocity += new Vector2(0f, jumpSpeed);
             isJumping = true;
         } else if (value.isPressed && lacocoBodyCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) && lacocoFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground"))) {
-            Debug.Log("touching");
+
             lacocoRigidBody.velocity += new Vector2(0f, jumpSpeed);
             isJumping = true;
         }
@@ -74,6 +88,21 @@ public class PlayerMovement : MonoBehaviour
             lacocoAnimation.SetBool("isClimbing", playerHasVerticalSpeed);
         } else {
             lacocoRigidBody.gravityScale = initialGravityScale;
+        }
+    }
+
+    void Die() {
+        if (lacocoBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemies"))) {
+            isAlive = false;
+            // lacocoSprite.color = "red";
+            lacocoRigidBody.velocity = new Vector2(-20f, 20f);
+            lacocoAnimation.SetTrigger("isDying");
+        }
+    }
+
+    void StopDeathRoll() {
+        if (lacocoFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground"))) {
+            lacocoRigidBody.velocity = new Vector2(0f, 0f);
         }
     }
 }
