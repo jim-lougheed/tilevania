@@ -92,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void Die() {
-        if (lacocoBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemies"))) {
+        if (lacocoBodyCollider.IsTouchingLayers(LayerMask.GetMask("Hazards", "Enemies")) || lacocoFeetCollider.IsTouchingLayers(LayerMask.GetMask("Enemis", "Hazards"))) {
             isAlive = false;
             // lacocoSprite.color = "red";
             lacocoRigidBody.velocity = new Vector2(-20f, 20f);
