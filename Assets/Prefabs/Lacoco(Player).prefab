@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: 9128175651122792170}
   - component: {fileID: 3844591005452398193}
   - component: {fileID: 1601671081}
-  m_Layer: 0
+  - component: {fileID: 1475292864872325291}
+  m_Layer: 8
   m_Name: Lacoco(Player)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +97,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -780610227
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 895356342, guid: 917c596bafd14334faceb89b92c3586a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -118,12 +119,12 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 1615761838058080190}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 79581a59e1e5fe04c832556f978364d6, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.035182, y: -0.09968269}
-  m_Size: {x: 0.4370861, y: 0.91790843}
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.5, y: 1}
   m_Direction: 0
 --- !u!50 &9128175651122792170
 Rigidbody2D:
@@ -140,11 +141,11 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 8
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &3844591005452398193
 MonoBehaviour:
@@ -158,6 +159,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90448898ed90d9d4d97a661015866bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lacocoRigidBody: {fileID: 9128175651122792170}
+  lacocoCollider: {fileID: 4464246238880256382}
+  lacocoFeetCollider: {fileID: 0}
+  runSpeed: 7
+  climbSpeed: 5
+  lacocoAnimation: {fileID: 1615761838058080188}
+  jumpSpeed: 20
 --- !u!114 &1601671081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,3 +196,29 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!61 &1475292864872325291
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615761838058080190}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.25}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.3, y: 0.5}
+  m_EdgeRadius: 0
