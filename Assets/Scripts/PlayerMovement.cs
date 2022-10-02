@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     float ladderGravityScale = 0f;
     [SerializeField] Animator lacocoAnimation;
     [SerializeField] float jumpSpeed = 25f;
+
+    bool isJumping = false;
     void Start()
     {
         lacocoRigidBody.GetComponent<Rigidbody2D>();
@@ -26,6 +28,9 @@ public class PlayerMovement : MonoBehaviour
         Run();
         FlipSprite();
         ClimbLadder();
+        if (lacocoRigidBody.velocity.y < 0) {
+            isJumping = false;
+        }
     }
 
     void OnMove(InputValue value) {
@@ -33,8 +38,14 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void OnJump(InputValue value) {
-        if (value.isPressed && lacocoCollider.IsTouchingLayers(LayerMask.GetMask("Ground"))) {
+        if (value.isPressed && lacocoCollider.IsTouchingLayers(LayerMask.GetMask("Ladder"))) {
+            lacocoRigidBody.gravityScale = initialGravityScale;
             lacocoRigidBody.velocity += new Vector2(0f, jumpSpeed);
+            isJumping = true;
+        } else if (value.isPressed && lacocoCollider.IsTouchingLayers(LayerMask.GetMask("Ground"))) {
+            Debug.Log("touching");
+            lacocoRigidBody.velocity += new Vector2(0f, jumpSpeed);
+            isJumping = true;
         }
     }
 
@@ -54,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void ClimbLadder() {
-        if (lacocoCollider.IsTouchingLayers(LayerMask.GetMask("Ladder"))) {
+        if (lacocoCollider.IsTouchingLayers(LayerMask.GetMask("Ladder")) && !isJumping) {
             Vector2 climbVelocity = new Vector2(lacocoRigidBody.velocity.x, moveInput.y * climbSpeed);
             lacocoRigidBody.velocity = climbVelocity;
             lacocoRigidBody.gravityScale = ladderGravityScale;
