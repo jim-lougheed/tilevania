@@ -108,6 +108,7 @@ public class PlayerMovement : MonoBehaviour
             // lacocoSprite.color = "red";
             lacocoRigidBody.velocity = new Vector2(-20f, 20f);
             lacocoAnimation.SetTrigger("isDying");
+            FindObjectOfType<GameSession>().ProcessPlayerDeath();
         }
     }
 
