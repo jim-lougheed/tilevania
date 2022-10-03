@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] CapsuleCollider2D lacocoBodyCollider;
     [SerializeField] BoxCollider2D lacocoFeetCollider;
     [SerializeField] SpriteRenderer lacocoSprite;
+    [SerializeField] GameObject bullet;
     [SerializeField] float runSpeed = 7f;
     [SerializeField] float climbSpeed = 5f;
     float initialGravityScale = 6f;
@@ -18,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpSpeed = 20f;
     bool isJumping = false;
     public bool isAlive = true;
+    [SerializeField] Transform gun;
     void Start()
     {
         lacocoRigidBody.GetComponent<Rigidbody2D>();
@@ -61,6 +63,15 @@ public class PlayerMovement : MonoBehaviour
 
             lacocoRigidBody.velocity += new Vector2(0f, jumpSpeed);
             isJumping = true;
+        }
+    }
+
+    void OnFire(InputValue value) {
+        if (!isAlive) {
+            return;
+        }
+        if (value.isPressed) {
+            Instantiate(bullet, gun.position, transform.rotation);
         }
     }
 
